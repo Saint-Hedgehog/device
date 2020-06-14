@@ -159,6 +159,52 @@
   }
 }
 
+/*Анимация ошибки ввода данных в модальное окно*/
+
+@-webkit-keyframes shake {
+  0%,
+  100% {
+    transform: translate(-50%, -50%)
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translate(-40%, -50%)
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translate(-60%, -50%)
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translate(-50%, -50%)
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translate(-40%, -50%)
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translate(-60%, -50%)
+  }
+}
+
 /*Глобальные стили*/
 
 .page {
@@ -255,7 +301,7 @@ input[type=radio].visually-hidden {
   margin: 0 auto
 }
 
-.container,
+
 .containers {
   padding: 0 60px
 }
@@ -550,6 +596,10 @@ header {
   cursor: pointer
 }
 
+.catalog-button-hover:hover+.site-nav__sublist {
+  display: flex
+}
+
 .site-nav__link-catalog {
   position: relative
 }
@@ -639,7 +689,7 @@ header {
 
 .slider__controls {
   position: absolute;
-  top: 357px;
+  bottom: 163px;
   right: 28px;
   display: flex;
   justify-content: space-between;
@@ -772,7 +822,7 @@ header {
 .slider__item-1 .number {
   position: absolute;
   top: -4px;
-  right: -12px
+  right: -13px
 }
 
 .slider__item-2 .number,
@@ -795,7 +845,8 @@ header {
 }
 
 .slider__content-button {
-  width: 220px
+  width: 220px;
+  padding: 9px 39px 9px 44px
 }
 
 .table-item {
@@ -898,12 +949,13 @@ header {
   background-color: var(--special-yellow)
 }
 
-.catalog-mainmenu__item:hover .catalog-mainmenu__link-container {
-  background-color: var(--special-yellow-dark)
+.catalog-mainmenu__link:hover .catalog-mainmenu__link-container {
+  background-color: var(--special-yellow-dark);
+  cursor: pointer
 }
 
-.catalog-mainmenu__item:active .catalog-mainmenu__name,
-.catalog-mainmenu__item:active .icon-catalog-mainmenu {
+.catalog-mainmenu__link:active .catalog-mainmenu__name,
+.catalog-mainmenu__link:active .icon-catalog-mainmenu {
   opacity: .3
 }
 
@@ -934,7 +986,8 @@ header {
 .icon-fitness-bracelets {
   width: 107px;
   height: 65px;
-  margin-top: 48px
+  margin-top: 48px;
+  margin-left: 1px
 }
 
 .icon-smart-watch {
@@ -970,7 +1023,7 @@ header {
 /*======Сервис======*/
 
 .services {
-  min-width: 1200px;
+  min-width: 1160px;
   margin-bottom: 89px;
   padding-top: 15px;
   padding-bottom: 68px;
@@ -1305,7 +1358,7 @@ header {
 /*===Подвал===*/
 
 .footer {
-  min-width: 1200px;
+  min-width: 1160px;
   padding: 46px 0;
   background-color: var(--basic-dark)
 }
@@ -1447,15 +1500,19 @@ header {
 
 .footer__site-nav {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
   margin: 0;
   padding: 0;
-  width: 423px;
+  min-width: 423px;
   list-style: none
 }
 
+.footer__site-nav__item:first-child {
+  margin-left: 3px
+}
+
 .footer__site-nav__item {
-  margin-right: 32px
+  margin-right: 33px
 }
 
 .footer__site-nav__item:last-child {
@@ -1514,7 +1571,15 @@ header {
   list-style: none
 }
 
-.social-link {
+.social__item {
+  margin-right: 20px
+}
+
+.social__item:last-child {
+  margin-right: 0
+}
+
+.social__link {
   display: block;
   width: 32px;
   height: 32px;
@@ -1644,11 +1709,12 @@ header {
 .catalog-header {
   min-width: 1160px;
   min-height: 70px;
-  background: linear-gradient(to right, var(--basic-grey-darker), var(--basic-grey-darker) 32%, var(--basic-grey-dark) 32%, var(--basic-grey-dark) 100%)
+  background: linear-gradient(to right, var(--basic-grey-darker), var(--basic-grey-darker) 28.276%, var(--basic-grey-dark) 28.276%, var(--basic-grey-dark) 100%)
 }
 
 .catalog-header .container {
   display: flex;
+  justify-content: space-between;
   width: 1100px;
   margin: 0 auto;
   padding-left: 60px;
@@ -1680,8 +1746,8 @@ header {
 }
 
 .catalog-header__sorting-header {
-  flex-grow: 1;
-  padding: 24px 0 26px 72px
+  width: 760px;
+  padding: 24px 0 26px
 }
 
 .catalog-header__sorting-header__list {
@@ -1766,7 +1832,7 @@ header {
 /*===Фильтры===*/
 
 .catalog-content {
-  background: linear-gradient(to right, var(--special-grey-lighten), var(--special-grey-lighten) 32%, var(--basic-white) 32%, var(--basic-white) 100%)
+  background: linear-gradient(to right, var(--special-grey-lighten), var(--special-grey-lighten) 28.276%, var(--basic-white) 28.276%, var(--basic-white) 100%)
 }
 
 .catalog-content .container {
@@ -2323,17 +2389,6 @@ header {
   outline: 2px solid var(--special-yellow)
 }
 
-.modal-feedback__form__input:invalid {
-  outline: none;
-  background-color: var(--special-red-white)
-}
-
-.modal-feedback__form__input:-moz-ui-invalid {
-  outline: none;
-  background-color: var(--special-red-white);
-  box-shadow: none;
-}
-
 .modal-feedback__form__input-comment {
   width: 100%;
   height: 167px
@@ -2343,6 +2398,16 @@ header {
   width: 200px;
   padding-left: 34px;
   padding-right: 35px
+}
+
+.modal-error {
+  -webkit-animation: shake 0.8s;
+  animation: shake 0.8s
+}
+
+.modal-error .modal-feedback__form__input {
+  outline: none;
+  background-color: var(--special-red-white)
 }
 
 /*===Модальное окно - карта===*/
