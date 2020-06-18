@@ -1,4 +1,4 @@
-"use strict";
+//"use strict";
 // Кнопка выпадающего меню //
 
 var showNavigationLink = document.querySelector(".catalog-button");
@@ -44,6 +44,9 @@ var feedbackForm = modalForm.querySelector(".modal-feedback__form");
 var modalFormName = modalForm.querySelector(".modal-feedback__form__input-name");
 var modalFormEmail = modalForm.querySelector(".modal-feedback__form__input-email");
 var modalFormComment = modalForm.querySelector(".modal-feedback__form__input-comment");
+var fields = modalForm.querySelectorAll('.modal-feedback__form__input');
+
+//Проверка локального хранилища//
 
 var isStorageSupport = true;
 var nameStorage = "";
@@ -55,6 +58,8 @@ try {
 } catch(err) {
   isStorageSupport = false;
 }
+
+//Открытие модального окна и добавления overlay//
 
 feedbackButton.addEventListener("click", function (evt) {
   evt.preventDefault();
@@ -98,20 +103,63 @@ mapClose.addEventListener("click", function (evt) {
   }, 800);
 });
 
+//Проверка заполнения полей формы//
+
+function checkName() {
+  if(modalFormName.value){
+    modalFormName.classList.remove('error');
+  } else {
+    modalFormName.classList.add('error');
+  }
+}
+
+function checkEmail() {
+  if(modalFormEmail.value){
+    modalFormEmail.classList.remove('error');
+  } else {
+    modalFormEmail.classList.add('error');
+  }
+}
+
+function checkComment() {
+  if(modalFormComment.value){
+    modalFormComment.classList.remove('error');
+  } else {
+    modalFormComment.classList.add('error');
+  }
+}
+
+modalFormName.addEventListener('change', function(){
+  checkName();
+});
+
+modalFormEmail.addEventListener('change', function(){
+  checkEmail();
+});
+
+modalFormComment.addEventListener('change', function(){
+  checkComment();
+});
+
 feedbackForm.addEventListener("submit", function (evt) {
   if (!modalFormName.value || !modalFormEmail.value || !modalFormComment.value) {
     evt.preventDefault();
     modalForm.classList.remove("modal-error");
-    setTimeout(function() {
+    modalForm.offsetWidth = modalForm.offsetWidth;
     modalForm.classList.add("modal-error");
-    }, 800);
   } else {
     if (isStorageSupport) {
       localStorage.setItem("name", modalFormName.value);
       localStorage.setItem("email", modalFormEmail.value);
     }
   }
+
+  checkName();
+  checkEmail();
+  checkComment();
 });
+
+//Закрытие модального окна клавишой ESC//
 
 window.addEventListener("keydown", function(evt) {
   if (evt.keyCode === 27) {

@@ -5,6 +5,13 @@
 * Browsers: last 2 version,not dead,not ie <= 11
 */
 
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 2 version,not dead,not ie <= 11
+*/
+
 /*Переменные*/
 
 :root {
@@ -161,6 +168,23 @@
 
 /*Анимация закрытия модального окна*/
 
+@-webkit-keyframes bounceOut {
+  0% {
+    transform: translate(-50%, -50%) scale(1)
+  }
+  25% {
+    transform: translate(-50%, -50%) scale(0.95)
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 1
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.3);
+    opacity: 0
+  }
+}
+
 @keyframes bounceOut {
   0% {
     transform: translate(-50%, -50%) scale(1)
@@ -179,6 +203,28 @@
 }
 
 /*Анимация ошибки ввода данных в модальное окно*/
+
+@-webkit-keyframes shake {
+  0%,
+  100% {
+    transform: translate(-50%, -50%)
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translate(calc(-50% - 10px), -50%)
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translate(calc(-50% + 10px), -50%)
+  }
+}
 
 @keyframes shake {
   0%,
@@ -2404,10 +2450,9 @@ header {
   animation: shake 0.8s;
 }
 
-/*.modal-error .modal-feedback__form__input {
-  outline: none;
-  background-color: var(--special-red-white)
-}*/
+.error{
+  background: var(--special-red-white)
+}
 
 /*===Модальное окно - карта===*/
 
@@ -2493,7 +2538,7 @@ header {
   animation: feedback 0.8s
 }
 
-.modal-out {
+.modal-show.modal-out {
   -webkit-animation: bounceOut 0.8s;
   animation: bounceOut 0.8s
 }
