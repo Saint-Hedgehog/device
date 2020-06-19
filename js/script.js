@@ -41,10 +41,10 @@ var overlay = document.querySelector(".modal-overlay");
 var formClose = modalForm.querySelector(".modal-close");
 var mapClose = modalMap.querySelector(".modal-close");
 var feedbackForm = modalForm.querySelector(".modal-feedback__form");
-var modalFormName = modalForm.querySelector(".modal-feedback__form__input-name");
-var modalFormEmail = modalForm.querySelector(".modal-feedback__form__input-email");
-var modalFormComment = modalForm.querySelector(".modal-feedback__form__input-comment");
-var fields = modalForm.querySelectorAll('.modal-feedback__form__input');
+var modalFormName = modalForm.querySelector(".modal-feedback-form__input-name");
+var modalFormEmail = modalForm.querySelector(".modal-feedback-form__input-email");
+var modalFormComment = modalForm.querySelector(".modal-feedback-form__input-comment");
+var fields = modalForm.querySelectorAll(".modal-feedback-form__input");
 
 //Проверка локального хранилища//
 
@@ -107,37 +107,37 @@ mapClose.addEventListener("click", function (evt) {
 
 function checkName() {
   if(modalFormName.value){
-    modalFormName.classList.remove('error');
+    modalFormName.classList.remove("error");
   } else {
-    modalFormName.classList.add('error');
+    modalFormName.classList.add("error");
   }
 }
 
 function checkEmail() {
   if(modalFormEmail.value){
-    modalFormEmail.classList.remove('error');
+    modalFormEmail.classList.remove("error");
   } else {
-    modalFormEmail.classList.add('error');
+    modalFormEmail.classList.add("error");
   }
 }
 
 function checkComment() {
   if(modalFormComment.value){
-    modalFormComment.classList.remove('error');
+    modalFormComment.classList.remove("error");
   } else {
-    modalFormComment.classList.add('error');
+    modalFormComment.classList.add("error");
   }
 }
 
-modalFormName.addEventListener('change', function(){
+modalFormName.addEventListener("change", function(){
   checkName();
 });
 
-modalFormEmail.addEventListener('change', function(){
+modalFormEmail.addEventListener("change", function(){
   checkEmail();
 });
 
-modalFormComment.addEventListener('change', function(){
+modalFormComment.addEventListener("change", function(){
   checkComment();
 });
 
