@@ -40,7 +40,7 @@ var modalMap = document.querySelector(".modal-map");
 var overlay = document.querySelector(".modal-overlay");
 var formClose = modalForm.querySelector(".modal-close");
 var mapClose = modalMap.querySelector(".modal-close");
-var feedbackForm = modalForm.querySelector(".modal-feedback__form");
+var feedbackForm = modalForm.querySelector(".modal-feedback-form");
 var modalFormName = modalForm.querySelector(".modal-feedback-form__input-name");
 var modalFormEmail = modalForm.querySelector(".modal-feedback-form__input-email");
 var modalFormComment = modalForm.querySelector(".modal-feedback-form__input-comment");
@@ -76,6 +76,8 @@ feedbackButton.addEventListener("click", function (evt) {
     modalFormComment.focus();
   }
 });
+
+//Закрытие модального окна//
 
 formClose.addEventListener("click", function (evt) {
   evt.preventDefault();
